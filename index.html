@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <meta charset="UTF-8">
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Contratos de Parcelamento IPTU</title>
+</head>
+<style type="text/css">
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+  h1 {
+    position:absolute;
+    top:180px;
+    left:180px; 
+    background-color: lightgrey;
+    border-radius: 25%;
+  }
+  h2 {
+    margin: 0px;
+    padding: 0px;
+  }
+  ul.list-group {
+    margin: 0px;
+    width: 450px;
+    list-style: none;
+    position: absolute;
+    left: 95px;
+  }
+  .contracts-items {
+    top: 380px;
+    left: 640px;
+  }
+  .contracts-text {
+    margin: 0px;
+    width: 450px;
+    list-style: none;
+    position: absolute;
+    top: -30px;
+    left: 1px;
+
+  }
+  .list-items-contracts {
+    list-style: none;
+    background-color: #0d6efd;
+    box-shadow: 3px 2px teal;
+    position: absolute;
+    top: 55px;
+    left: -3px;
+    padding: 10px;
+    width: 100px;
+    margin:  5px;
+  }
+  .list-group-item {
+    width: 450px;
+  }
+  .teste {
+    background-color: lightgreen;
+    padding: 10px;
+    width: 54px;
+    margin:  5px;
+    box-shadow: 3px 2px teal;
+  }
+  div.firstList {
+    position:absolute;
+    top:250px;
+    left:180px; 
+  }
+  div.secondList {
+    position:absolute;
+    top:250px;
+    left:500px; 
+  }
+</style> 
+<body class="bg-secondary">
+  <ul class="list-group">
+    <li class="bg-primary fs-3 text-center text-white list-group-item">
+        Imóveis
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Rua Marechal Deodoro, 368
+      <span class="badge bg-primary rounded-pill">4</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Rua Marechal Dedodoro, 360 LJ 8
+      <span class="badge bg-primary rounded-pill">6</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Rua Marechal Deodoro, 368 ap 104
+      <span class="badge bg-primary rounded-pill">2</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Rua Marechal Deodoro, 368 ap 202
+      <span class="badge bg-primary rounded-pill">3</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Rua Marechal Deodoro, 360 loja 6
+      <span class="badge bg-primary rounded-pill">2</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Rua Dr. Ormindo Maia, 33 snlt
+      <span class="badge bg-primary rounded-pill">15</span>
+    </li>
+    <li class="list-group-item d-flex justify-content-between align-items-center">
+        Rua Marechal Deodoro, 368 loja 20
+      <span class="badge bg-primary rounded-pill">1</span>
+    </li>
+  </ul>
+    
+  <ul class="contracts-items list-group">
+    <!-- <li class="contracts-text bg-primary fs-3 text-center text-white list-group-item">
+      Contratos
+    </li> -->
+  </ul>
+  <script>
+    const listOfTheContracts = [
+      {  
+        subscription: '010.835/000',
+        address: 'Rua Marechal Deodoro, 368',
+        Neighborhood: 'Centro',
+        contracts: ['016824', '016825', '016826', '016827'],
+        year: '2021'},
+      {
+        subscription: '010.823/000',
+        address: 'Rua Marechal Dedodoro, 360 LJ 8',
+        Neighborhood: 'Centro',
+        contracts: ['016801', '016822', '016823', '016813', '016812', '016811'],
+        year: '2021'},
+      {
+        subscription: '010.831/000',
+        address: 'Rua Marechal Deodoro, 368 ap 104',
+        Neighborhood: 'Centro',
+        contracts: ['016810', '016809'],
+        year: '2021'},
+      {
+        subscription: '010.832/000',
+        address: 'Rua Marechal Deodoro, 368 ap 202',
+        Neighborhood: 'Centro',
+        contracts: ['016800', '016808', '016790'],
+        year: '2021'},
+      {
+        subscription: '010.822/000',
+        address: 'Rua Marechal Deodoro, 360 loja 6',
+        Neighborhood: 'Centro',
+        contracts: ['016816', '016815', '016814', '016821', '016820'],
+        year: '2021'},
+      {
+        subscription: '065.241/000',
+        address: 'Rua Dr. Ormindo Maia, 33 snlt',
+        Neighborhood: 'Bosque do Imperador',
+        contracts: ['016796', '016795', '016819', '016818', '016817', '016794', '016792', '016791', '016806', '016804', '016802', '016803', '016805', '016807', '016793'],
+        year: '2021'},
+      {
+        subscription: '010.828/001',
+        address: 'Rua Marechal Deodoro, 368 loja 20',
+        Neighborhood: 'Centro',
+        contracts: ['016828'],
+        year: '2021'
+    }]
+
+    const ul = document.querySelector('.list-group')
+    const ulContracts = document.querySelector('.contracts-items')
+    const h2 = document.querySelector('h2')
+    let leftPosition = 0
+    
+    const setEffectMouseOver = event => {
+      event.target.style.fontSize = '20px'
+      event.target.style.backgroundColor = '#0d6efd'
+      event.target.style.color = 'white'
+    }
+    ul.addEventListener('mouseover', setEffectMouseOver)
+    
+    const setEffectMouseOut = event => {
+      event.target.style.fontSize = '16px'
+      event.target.style.backgroundColor = 'white'
+      event.target.style.color = 'black'
+    }
+
+    ul.addEventListener('mouseout', setEffectMouseOut)
+
+    ul.addEventListener('click', event => {
+      listContractsShow(event.target)
+    })
+        
+    //changePositionLi(event.target)
+    //navigator.clipboard.writeText(event.target.innerText)
+
+    const listContractsShow = objSelect => {
+      const selectedEddress = objSelect.innerText.split('\n')[0]
+      const selectedContract = listOfTheContracts.find((contract) => contract.address === selectedEddress)
+
+        selectedContract.contracts.forEach( contract => {
+          let child = ulContracts.lastElementChild
+ 
+          if (child === null) {
+            let li = document.createElement('li')
+            li.setAttribute('class', "contracts-text bg-primary fs-3 text-center text-white list-group-item")
+            li.textContent = 'Contratos'
+            ulContracts.append(li)
+            
+            li = `<li class="list-items-contracts bg-primary">${contract}</li>`
+
+            ulContracts.innerHTML += li
+          } else {
+            const li = `<li class="list-items-contracts bg-primary">${contract}</li>`
+            ulContracts.innerHTML += li
+          } 
+        })
+    }
+    
+    const changePositionLi = li => {
+      li.style.position = `absolute`
+
+      const transitionElement = setInterval(() => {
+        li.style.left = `${leftPosition++}px`
+               
+        if (leftPosition === 290) {
+          clearInterval(transitionElement)
+          leftPosition = 0
+        }
+      }, 1)
+    }
+   </script>
+</body>
+</html>
