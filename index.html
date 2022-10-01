@@ -7,74 +7,74 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <title>Contratos de Parcelamento IPTU</title>
 </head>
-<style type="text/css">
-  body {
-    margin: 0px;
-    padding: 0px;
-  }
-  h1 {
-    position:absolute;
-    top:180px;
-    left:180px; 
-    background-color: lightgrey;
-    border-radius: 25%;
-  }
-  h2 {
-    margin: 0px;
-    padding: 0px;
-  }
-  ul.list-group {
-    margin: 0px;
-    width: 450px;
-    list-style: none;
-    position: absolute;
-    left: 95px;
-  }
-  .contracts-items {
-    top: 380px;
-    left: 640px;
-  }
-  .contracts-text {
-    margin: 0px;
-    width: 450px;
-    list-style: none;
-    position: absolute;
-    top: -30px;
-    left: 1px;
-
-  }
-  .list-items-contracts {
-    list-style: none;
-    background-color: #0d6efd;
-    box-shadow: 3px 2px teal;
-    position: absolute;
-    top: 55px;
-    left: -3px;
-    padding: 10px;
-    width: 100px;
-    margin:  5px;
-  }
-  .list-group-item {
-    width: 450px;
-  }
-  .teste {
-    background-color: lightgreen;
-    padding: 10px;
-    width: 54px;
-    margin:  5px;
-    box-shadow: 3px 2px teal;
-  }
-  div.firstList {
-    position:absolute;
-    top:250px;
-    left:180px; 
-  }
-  div.secondList {
-    position:absolute;
-    top:250px;
-    left:500px; 
-  }
-</style> 
+  <style type="text/css">
+    body {
+      margin: 0px;
+      padding: 0px;
+    }
+    h1 {
+      position:absolute;
+      top:180px;
+      left:180px; 
+      background-color: lightgrey;
+      border-radius: 25%;
+    }
+    h2 {
+      margin: 0px;
+      padding: 0px;
+    }
+    ul.list-group {
+      margin: 0px;
+      width: 462px;
+      list-style: none;
+      position: absolute;
+      left: 95px;
+    }
+    .contracts-items {
+      top: 380px;
+      left: 640px;
+    }
+    .contracts-text {
+      margin: 0px;
+      width: 450px;
+      list-style: none;
+      position: absolute;
+      top: -10px;
+      left: 1px;
+    }
+    .list-items-contracts {
+      list-style: none;
+      background-color: #0d6efd;
+      box-shadow: 3px 2px grey;
+      color: white;
+      position: absolute;
+      top: 55px;
+      left: -3px;
+      padding: 10px;
+      width: 70px;
+      margin:  5px;
+    }
+    .list-group-item {
+      width: 462px;
+    }
+    .teste {
+      background-color: lightgreen;
+      padding: 10px;
+      width: 54px;
+      margin:  5px;
+      box-shadow: 3px 2px teal;
+    }
+    div.firstList {
+      position:absolute;
+      top:250px;
+      left:180px; 
+    }
+    div.secondList {
+      position:absolute;
+      top:250px;
+      left:500px; 
+    }
+  </style> 
 <body class="bg-secondary">
   <ul class="list-group">
     <li class="bg-primary fs-3 text-center text-white list-group-item">
@@ -98,7 +98,7 @@
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center">
         Rua Marechal Deodoro, 360 loja 6
-      <span class="badge bg-primary rounded-pill">2</span>
+      <span class="badge bg-primary rounded-pill">5</span>
     </li>
     <li class="list-group-item d-flex justify-content-between align-items-center">
         Rua Dr. Ormindo Maia, 33 snlt
@@ -110,12 +110,9 @@
     </li>
   </ul>
     
-  <ul class="contracts-items list-group">
-    <!-- <li class="contracts-text bg-primary fs-3 text-center text-white list-group-item">
-      Contratos
-    </li> -->
-  </ul>
+  <ul class="contracts-items list-group"></ul>
   <script>
+    /* DADOS DOS CONTRATOS */
     const listOfTheContracts = [
       {  
         subscription: '010.835/000',
@@ -160,6 +157,7 @@
         contracts: ['016828'],
         year: '2021'
     }]
+    /* FIM DOS DADOS*/
 
     const ul = document.querySelector('.list-group')
     const ulContracts = document.querySelector('.contracts-items')
@@ -167,14 +165,12 @@
     let leftPosition = 0
     
     const setEffectMouseOver = event => {
-      event.target.style.fontSize = '20px'
       event.target.style.backgroundColor = '#0d6efd'
       event.target.style.color = 'white'
     }
     ul.addEventListener('mouseover', setEffectMouseOver)
     
     const setEffectMouseOut = event => {
-      event.target.style.fontSize = '16px'
       event.target.style.backgroundColor = 'white'
       event.target.style.color = 'black'
     }
@@ -182,33 +178,32 @@
     ul.addEventListener('mouseout', setEffectMouseOut)
 
     ul.addEventListener('click', event => {
-      listContractsShow(event.target)
-    })
-        
-    //changePositionLi(event.target)
-    //navigator.clipboard.writeText(event.target.innerText)
-
-    const listContractsShow = objSelect => {
-      const selectedEddress = objSelect.innerText.split('\n')[0]
+      const selectedEddress = event.target.innerText.split('\n')[0]
       const selectedContract = listOfTheContracts.find((contract) => contract.address === selectedEddress)
+      const listContracts = selectedContract.contracts
+      listContractsShow(listContracts)
+    })
+    
+    const createTitleContrats = () => {
+      let li = document.createElement('li')
+      li.setAttribute('class', "contracts-text bg-primary fs-3 text-center text-white list-group-item")
+      li.textContent = 'Contratos'
+      ulContracts.append(li)
+    }
 
-        selectedContract.contracts.forEach( contract => {
-          let child = ulContracts.lastElementChild
- 
-          if (child === null) {
-            let li = document.createElement('li')
-            li.setAttribute('class', "contracts-text bg-primary fs-3 text-center text-white list-group-item")
-            li.textContent = 'Contratos'
-            ulContracts.append(li)
-            
-            li = `<li class="list-items-contracts bg-primary">${contract}</li>`
-
-            ulContracts.innerHTML += li
-          } else {
-            const li = `<li class="list-items-contracts bg-primary">${contract}</li>`
-            ulContracts.innerHTML += li
-          } 
-        })
+    let positionLeftCurrent = -3
+    
+    const listContractsShow = listOfTheContracts => {
+      ulContracts.innerHTML = ''
+      positionLeftCurrent = -3
+      createTitleContrats() 
+      
+      listOfTheContracts.forEach( contract => {
+        const li = `<li style="left: ${positionLeftCurrent}px" class="list-items-contracts bg-primary">${contract}</li>`
+        
+        ulContracts.innerHTML += li
+        positionLeftCurrent += 78
+      })
     }
     
     const changePositionLi = li => {
@@ -216,13 +211,15 @@
 
       const transitionElement = setInterval(() => {
         li.style.left = `${leftPosition++}px`
-               
+        
         if (leftPosition === 290) {
           clearInterval(transitionElement)
           leftPosition = 0
         }
       }, 1)
     }
-   </script>
+    //changePositionLi(event.target)
+    //navigator.clipboard.writeText(event.target.innerText)
+    </script>
 </body>
 </html>
