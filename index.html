@@ -12,17 +12,6 @@
       margin: 0px;
       padding: 0px;
     }
-    h1 {
-      position:absolute;
-      top:180px;
-      left:180px; 
-      background-color: lightgrey;
-      border-radius: 25%;
-    }
-    h2 {
-      margin: 0px;
-      padding: 0px;
-    }
     ul.list-group {
       margin: 0px;
       width: 462px;
@@ -39,78 +28,30 @@
       width: 450px;
       list-style: none;
       position: absolute;
-      top: -10px;
-      left: 1px;
+      top: 364px;
+      left: 95px;
     }
     .list-items-contracts {
       list-style: none;
       background-color: #0d6efd;
-      box-shadow: 3px 2px grey;
+      box-shadow: 2px 2px white;
       color: white;
       position: absolute;
-      top: 55px;
-      left: -3px;
+      top: 405px;
+      left: 95px;
       padding: 10px;
       width: 70px;
-      margin:  5px;
+      margin:  0px;
     }
     .list-group-item {
       width: 462px;
     }
-    .teste {
-      background-color: lightgreen;
-      padding: 10px;
-      width: 54px;
-      margin:  5px;
-      box-shadow: 3px 2px teal;
-    }
-    div.firstList {
-      position:absolute;
-      top:250px;
-      left:180px; 
-    }
-    div.secondList {
-      position:absolute;
-      top:250px;
-      left:500px; 
-    }
   </style> 
 <body class="bg-secondary">
-  <ul class="list-group">
-    <li class="bg-primary fs-3 text-center text-white list-group-item">
-        Imóveis
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Rua Marechal Deodoro, 368
-      <span class="badge bg-primary rounded-pill">4</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Rua Marechal Dedodoro, 360 LJ 8
-      <span class="badge bg-primary rounded-pill">6</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Rua Marechal Deodoro, 368 ap 104
-      <span class="badge bg-primary rounded-pill">2</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Rua Marechal Deodoro, 368 ap 202
-      <span class="badge bg-primary rounded-pill">3</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Rua Marechal Deodoro, 360 loja 6
-      <span class="badge bg-primary rounded-pill">5</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Rua Dr. Ormindo Maia, 33 snlt
-      <span class="badge bg-primary rounded-pill">15</span>
-    </li>
-    <li class="list-group-item d-flex justify-content-between align-items-center">
-        Rua Marechal Deodoro, 368 loja 20
-      <span class="badge bg-primary rounded-pill">1</span>
-    </li>
-  </ul>
-    
-  <ul class="contracts-items list-group"></ul>
+  <ul class="list-group"></ul>
+  
+  <ul class="contracts-items"></ul>
+
   <script>
     /* DADOS DOS CONTRATOS */
     const listOfTheContracts = [
@@ -163,6 +104,31 @@
     const ulContracts = document.querySelector('.contracts-items')
     const h2 = document.querySelector('h2')
     let leftPosition = 0
+
+    const createTitleContrats2 = title => {
+      let li = document.createElement('li')
+      li.setAttribute('class', "bg-primary fs-3 text-center text-white list-group-item")
+      li.textContent = title
+      ul.append(li)
+    }
+    
+    listOfTheContracts.forEach( ({address, contracts}) => {
+
+      if (ul.innerHTML.length === 0) {
+        const title = 'Imóveis'
+        createTitleContrats2(title)
+      }
+      
+      let li = document.createElement('li')
+      li.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center')
+      li.textContent = `${address}`
+      
+      let span = document.createElement('span')
+      span.setAttribute('class', 'badge bg-primary rounded-pill')
+      span.textContent = `${contracts.length}`
+      li.append(span)
+      ul.append(li)
+    })
     
     const setEffectMouseOver = event => {
       event.target.style.backgroundColor = '#0d6efd'
@@ -174,9 +140,9 @@
       event.target.style.backgroundColor = 'white'
       event.target.style.color = 'black'
     }
-
+    
     ul.addEventListener('mouseout', setEffectMouseOut)
-
+    
     ul.addEventListener('click', event => {
       const selectedEddress = event.target.innerText.split('\n')[0]
       const selectedContract = listOfTheContracts.find((contract) => contract.address === selectedEddress)
@@ -190,17 +156,33 @@
       li.textContent = 'Contratos'
       ulContracts.append(li)
     }
-
-    let positionLeftCurrent = -3
     
+    let positionTopCurrent = 0
+    let positionLeftCurrent = 0
+
     const listContractsShow = listOfTheContracts => {
       ulContracts.innerHTML = ''
-      positionLeftCurrent = -3
+      positionTopCurrent = 405
+      positionLeftCurrent = 95
       createTitleContrats() 
       
       listOfTheContracts.forEach( contract => {
-        const li = `<li style="left: ${positionLeftCurrent}px" class="list-items-contracts bg-primary">${contract}</li>`
+        const isFullLine = ulContracts.childNodes.length === 6
+        const isFullLine2= ulContracts.childNodes.length === 12
+        const li = `<li style="top: ${positionTopCurrent}px; left: ${positionLeftCurrent}px" class="list-items-contracts bg-primary">${contract}</li>`
         
+        if (isFullLine) {
+          positionTopCurrent = 455
+          positionLeftCurrent = 17
+          console.log(positionTopCurrent)
+          console.log(positionLeftCurrent)
+        }
+        if (isFullLine2) {
+          positionTopCurrent = 505
+          positionLeftCurrent = 17
+          console.log(positionTopCurrent)
+          console.log(positionLeftCurrent)
+        }
         ulContracts.innerHTML += li
         positionLeftCurrent += 78
       })
@@ -208,7 +190,7 @@
     
     const changePositionLi = li => {
       li.style.position = `absolute`
-
+      
       const transitionElement = setInterval(() => {
         li.style.left = `${leftPosition++}px`
         
