@@ -28,7 +28,7 @@
       width: 450px;
       list-style: none;
       position: absolute;
-      top: 364px;
+      top: 366px;
       left: 95px;
     }
     .list-items-contracts {
@@ -103,7 +103,6 @@
     const ul = document.querySelector('.list-group')
     const ulContracts = document.querySelector('.contracts-items')
     const h2 = document.querySelector('h2')
-    let leftPosition = 0
 
     const createTitleContrats2 = title => {
       let li = document.createElement('li')
@@ -174,34 +173,34 @@
         if (isFullLine) {
           positionTopCurrent = 460
           positionLeftCurrent = 17
-          console.log(positionTopCurrent)
-          console.log(positionLeftCurrent)
         }
         if (isFullLine2) {
           positionTopCurrent = 510
           positionLeftCurrent = 17
-          console.log(positionTopCurrent)
-          console.log(positionLeftCurrent)
         }
         ulContracts.innerHTML += li
         positionLeftCurrent += 78
       })
     }
     
+    ulContracts.addEventListener( 'click', event => changePositionLi(event.target) )
+
     const changePositionLi = li => {
       li.style.position = `absolute`
+      //let leftPosition = 0
       
-      const transitionElement = setInterval(() => {
-        li.style.left = `${leftPosition++}px`
+      navigator.clipboard.writeText(li.innerText)
+
+      li.remove()
+      // const transitionElement = setInterval(() => {
+      //   li.target.style.left = `${leftPosition++}px`
         
-        if (leftPosition === 290) {
-          clearInterval(transitionElement)
-          leftPosition = 0
-        }
-      }, 1)
+      //   if (leftPosition === 290) {
+      //     clearInterval(transitionElement)
+      //     leftPosition = 0
+      //   }
+      // }, 1)
     }
-    //changePositionLi(event.target)
-    //navigator.clipboard.writeText(event.target.innerText)
     </script>
 </body>
 </html>
