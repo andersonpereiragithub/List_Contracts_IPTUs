@@ -1,0 +1,38 @@
+body {
+  margin: 0px;
+  padding: 0px;
+}
+ul.list-group {
+  margin: 0px;
+  width: 462px;
+  list-style: none;
+  position: absolute;
+  left: 95px;
+}
+.contracts-items {
+  top: 380px;
+  left: 640px;
+}
+.contracts-text {
+  margin: 0px;
+  width: 450px;
+  list-style: none;
+  position: absolute;
+  top: 366px;
+  left: 95px;
+}
+.list-items-contracts {
+  list-style: none;
+  background-color: #0d6efd;
+  box-shadow: 2px 2px white;
+  color: white;
+  position: absolute;
+  top: 405px;
+  left: 95px;
+  padding: 10px;
+  width: 70px;
+  margin:  0px;
+}
+.list-group-item {
+  width: 462px;
+}
