@@ -24,7 +24,7 @@ ul.list-group {
 .list-items-contracts {
   list-style: none;
   background-color: #0d6efd;
-  box-shadow: 2px 2px white;
+  box-shadow: 1px 1px white;
   color: white;
   position: absolute;
   top: 405px;
@@ -35,4 +35,17 @@ ul.list-group {
 }
 .list-group-item {
   width: 462px;
+}
+
+.dica {
+  position: absolute;
+  top: 190px;
+  left: 380px;
+  display: none;
+}
+.tipcontract {
+  position: relative;
+  top: 550px;
+  left: 230px;
+  display: none;
 }

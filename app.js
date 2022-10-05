@@ -64,7 +64,7 @@ const listOfTheContracts = [
     }
     
     let li = document.createElement('li')
-    li.setAttribute('class', 'list-group-item d-flex justify-content-between align-items-center')
+    li.setAttribute('class', 'ht list-group-item d-flex justify-content-between align-items-center')
     li.textContent = `${address}`
     
     let span = document.createElement('span')
@@ -77,12 +77,18 @@ const listOfTheContracts = [
   const setEffectMouseOver = event => {
     event.target.style.backgroundColor = '#0d6efd'
     event.target.style.color = 'white'
+
+    const divTip = document.querySelector('.dica')
+    divTip.style.display = 'inline'
   }
   ul.addEventListener('mouseover', setEffectMouseOver)
   
   const setEffectMouseOut = event => {
     event.target.style.backgroundColor = 'white'
     event.target.style.color = 'black'
+
+    const divTip = document.querySelector('.dica')
+    divTip.style.display = 'none'
   }
   
   ul.addEventListener('mouseout', setEffectMouseOut)
@@ -91,6 +97,7 @@ const listOfTheContracts = [
     const selectedEddress = event.target.innerText.split('\n')[0]
     const selectedContract = listOfTheContracts.find((contract) => contract.address === selectedEddress)
     const listContracts = selectedContract.contracts
+    
     listContractsShow(listContracts)
   })
   
@@ -109,6 +116,9 @@ const listOfTheContracts = [
     positionTopCurrent = 410
     positionLeftCurrent = 95
     createTitleContrats() 
+   
+    const divTipContract = document.querySelector('.tipcontract')
+    divTipContract.style.display = 'inline'
     
     listOfTheContracts.forEach( contract => {
       const isFullLine = ulContracts.childNodes.length === 6
