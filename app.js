@@ -98,6 +98,7 @@ const listOfTheContracts = [
     const selectedContract = listOfTheContracts.find((contract) => contract.address === selectedEddress)
     const listContracts = selectedContract.contracts
     
+    event.target.style.textDecoration = 'line-through'
     listContractsShow(listContracts)
   })
   
