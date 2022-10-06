@@ -49,18 +49,23 @@ const listOfTheContracts = [
   const ulContracts = document.querySelector('.contracts-items')
   const h2 = document.querySelector('h2')
 
-  const createTitleContrats2 = title => {
+  const createTitleContrats = title => {
     let li = document.createElement('li')
-    li.setAttribute('class', "bg-primary fs-3 text-center text-white list-group-item")
     li.textContent = title
-    ul.append(li)
+    if (title === 'Imóveis') {
+      li.setAttribute('class', "bg-primary fs-3 text-center text-white list-group-item")
+      ul.append(li)
+    } else {
+      li.setAttribute('class', "contracts-text bg-primary fs-3 text-center text-white list-group-item")
+      ulContracts.append(li)
+    }
   }
   
   listOfTheContracts.forEach( ({address, contracts}) => {
 
     if (ul.innerHTML.length === 0) {
       const title = 'Imóveis'
-      createTitleContrats2(title)
+      createTitleContrats(title)
     }
     
     let li = document.createElement('li')
@@ -98,16 +103,9 @@ const listOfTheContracts = [
     const selectedContract = listOfTheContracts.find((contract) => contract.address === selectedEddress)
     const listContracts = selectedContract.contracts
     
-    event.target.style.textDecoration = 'line-through'
     listContractsShow(listContracts)
+    event.target.style.textDecoration = 'line-through' // MUDAR ISSO!!!
   })
-  
-  const createTitleContrats = () => {
-    let li = document.createElement('li')
-    li.setAttribute('class', "contracts-text bg-primary fs-3 text-center text-white list-group-item")
-    li.textContent = 'Contratos'
-    ulContracts.append(li)
-  }
   
   let positionTopCurrent = 0
   let positionLeftCurrent = 0
@@ -116,21 +114,22 @@ const listOfTheContracts = [
     ulContracts.innerHTML = ''
     positionTopCurrent = 410
     positionLeftCurrent = 95
-    createTitleContrats() 
+
+    createTitleContrats('Contratos') 
    
     const divTipContract = document.querySelector('.tipcontract')
     divTipContract.style.display = 'inline'
     
     listOfTheContracts.forEach( contract => {
       const isFullLine = ulContracts.childNodes.length === 6
-      const isFullLine2= ulContracts.childNodes.length === 12
+      const isFullLineSecond = ulContracts.childNodes.length === 12
       const li = `<li style="top: ${positionTopCurrent}px; left: ${positionLeftCurrent}px" class="list-items-contracts bg-primary">${contract}</li>`
       
       if (isFullLine) {
         positionTopCurrent = 460
         positionLeftCurrent = 17
       }
-      if (isFullLine2) {
+      if (isFullLineSecond) {
         positionTopCurrent = 510
         positionLeftCurrent = 17
       }
@@ -142,18 +141,9 @@ const listOfTheContracts = [
   ulContracts.addEventListener( 'click', event => changePositionLi(event.target) )
 
   const changePositionLi = li => {
-    li.style.position = `absolute`
-    //let leftPosition = 0
-    
+        
     navigator.clipboard.writeText(li.innerText)
 
     li.remove()
-    // const transitionElement = setInterval(() => {
-    //   li.target.style.left = `${leftPosition++}px`
-      
-    //   if (leftPosition === 290) {
-    //     clearInterval(transitionElement)
-    //     leftPosition = 0
-    //   }
-    // }, 1)
+    
   }
