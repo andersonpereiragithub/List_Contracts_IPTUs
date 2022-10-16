@@ -33,6 +33,7 @@ ul.list-group {
   padding: 10px;
   width: 70px;
   margin:  0px;
+  cursor: copy;
 }
 .list-group-item {
   width: 462px;

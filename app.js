@@ -49,7 +49,7 @@ const listOfTheContracts = [
   const ulContracts = document.querySelector('.contracts-items')
   const h2 = document.querySelector('h2')
 
-  const createTitleContrats = title => {
+  const createTitle = title => {
     let li = document.createElement('li')
     li.textContent = title
     if (title === 'Imóveis') {
@@ -65,7 +65,7 @@ const listOfTheContracts = [
 
     if (ul.innerHTML.length === 0) {
       const title = 'Imóveis'
-      createTitleContrats(title)
+      createTitle(title)
     }
     
     let li = document.createElement('li')
@@ -115,7 +115,7 @@ const listOfTheContracts = [
     positionTopCurrent = 410
     positionLeftCurrent = 95
 
-    createTitleContrats('Contratos') 
+    createTitle('Contratos') 
    
     const divTipContract = document.querySelector('.tipcontract')
     divTipContract.style.display = 'inline'
@@ -123,7 +123,7 @@ const listOfTheContracts = [
     listOfTheContracts.forEach( contract => {
       const isFullLine = ulContracts.childNodes.length === 6
       const isFullLineSecond = ulContracts.childNodes.length === 12
-      const li = `<li style="top: ${positionTopCurrent}px; left: ${positionLeftCurrent}px" class="list-items-contracts bg-primary">${contract}</li>`
+      const li = `<li style="top: ${positionTopCurrent}px; left: ${positionLeftCurrent}px" data-toggle="tooltip" title="Copiar" class="list-items-contracts bg-primary">${contract}</li>`
       
       if (isFullLine) {
         positionTopCurrent = 460
