@@ -9,6 +9,7 @@ ul.list-group {
   list-style: none;
   position: absolute;
   left: 95px;
+  cursor: pointer;
 }
 .contracts-items {
   top: 380px;
@@ -21,6 +22,7 @@ ul.list-group {
   position: absolute;
   top: 366px;
   left: 95px;
+  
 }
 .list-items-contracts {
   list-style: none;

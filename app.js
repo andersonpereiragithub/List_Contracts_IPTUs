@@ -70,6 +70,8 @@ const listOfTheContracts = [
     
     let li = document.createElement('li')
     li.setAttribute('class', 'ht list-group-item d-flex justify-content-between align-items-center')
+    li.setAttribute('data-toggle','tooltip')
+    li.setAttribute('title', 'Selecione...')
     li.textContent = `${address}`
     
     let span = document.createElement('span')
@@ -83,8 +85,8 @@ const listOfTheContracts = [
     event.target.style.backgroundColor = '#0d6efd'
     event.target.style.color = 'white'
 
-    const divTip = document.querySelector('.dica')
-    divTip.style.display = 'inline'
+    // const divTip = document.querySelector('.dica')
+    // divTip.style.display = 'inline'
   }
   ul.addEventListener('mouseover', setEffectMouseOver)
   
@@ -92,8 +94,8 @@ const listOfTheContracts = [
     event.target.style.backgroundColor = 'white'
     event.target.style.color = 'black'
 
-    const divTip = document.querySelector('.dica')
-    divTip.style.display = 'none'
+    // const divTip = document.querySelector('.dica')
+    // divTip.style.display = 'none'
   }
   
   ul.addEventListener('mouseout', setEffectMouseOut)
@@ -104,7 +106,6 @@ const listOfTheContracts = [
     const listContracts = selectedContract.contracts
     
     listContractsShow(listContracts)
-    event.target.style.textDecoration = 'line-through' // MUDAR ISSO!!!
   })
   
   let positionTopCurrent = 0
